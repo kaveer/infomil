@@ -143,10 +143,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgDetaileClient;
-        private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.Button btnVisualiser;
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.Button btnSeDeconnecter;
+        public System.Windows.Forms.Button btnAjouter;
     }
 }

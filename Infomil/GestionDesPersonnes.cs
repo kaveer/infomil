@@ -12,6 +12,7 @@ namespace Infomil
 {
     public partial class frmGestionDesPersonnes : Form
     {
+        public string testmodel;
         public frmGestionDesPersonnes()
         {
             InitializeComponent();
@@ -19,7 +20,7 @@ namespace Infomil
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(testmodel);
         }
 
         private void btnVisualiser_Click(object sender, EventArgs e)
