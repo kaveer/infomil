@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace Infomil
 {
-    public partial class Form1 : Form
+    public partial class frmAuthentification : Form
     {
-        public Form1()
+        public frmAuthentification()
         {
             InitializeComponent();
+        }
+
+        private void btnValider_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAbandonner_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
