@@ -51,6 +51,12 @@
     <Compile Include="Authentification.Designer.cs">
       <DependentUpon>Authentification.cs</DependentUpon>
     </Compile>
+    <Compile Include="InfoClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoClients.Designer.cs">
+      <DependentUpon>InfoClients.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GestionDesPersonnes.cs">
@@ -61,6 +67,9 @@
     </Compile>
     <EmbeddedResource Include="Authentification.resx">
       <DependentUpon>Authentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoClients.resx">
+      <DependentUpon>InfoClients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
