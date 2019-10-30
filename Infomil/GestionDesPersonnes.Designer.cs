@@ -1,6 +1,6 @@
 ﻿namespace Infomil
 {
-    partial class Superviseur
+    partial class frmGestionDesPersonnes
     {
         /// <summary>
         /// Required designer variable.
@@ -117,7 +117,7 @@
             this.btnSeDeconnecter.UseVisualStyleBackColor = true;
             this.btnSeDeconnecter.Click += new System.EventHandler(this.btnSeDeconnecter_Click);
             // 
-            // Superviseur
+            // frmGestionDesPersonnes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,8 +129,8 @@
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.dgDetaileClient);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Superviseur";
-            this.Text = "Superviseur";
+            this.Name = "frmGestionDesPersonnes";
+            this.Text = "Gestion des Personnes";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetaileClient)).EndInit();

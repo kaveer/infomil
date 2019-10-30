@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Infomil
 {
-    public partial class Superviseur : Form
+    public partial class frmGestionDesPersonnes : Form
     {
-        public Superviseur()
+        public frmGestionDesPersonnes()
         {
             InitializeComponent();
         }
