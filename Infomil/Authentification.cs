@@ -19,6 +19,7 @@ namespace Infomil
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+
             frmGestionDesPersonnes r = new frmGestionDesPersonnes();
             r.btnAjouter.Text = "sdfvdfbv";
             r.Text = "fgbfgnswert6y";
@@ -29,7 +30,7 @@ namespace Infomil
 
         private void btnAbandonner_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
     }
 }
