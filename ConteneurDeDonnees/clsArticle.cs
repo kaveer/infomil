@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ConteneurDeDonnees
 {
-    public class Class1
+    public class clsArticle
     {
+        public string sNom { get; set; }
+        public decimal rPrix { get; set; }
+        public clsRayon objRayon { get; set; }
     }
 }
