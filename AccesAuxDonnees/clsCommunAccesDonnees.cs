@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace AccesAuxDonnees
 {
-    public class Class1
+   public class clsCommunAccesDonnees
     {
+        public void OuvirConnexion()
+        {
+
+        }
     }
 }
