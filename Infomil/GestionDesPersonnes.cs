@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConteneurDeDonnees;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,8 @@ namespace Infomil
 {
     public partial class frmGestionDesPersonnes : Form
     {
-        public string testmodel;
+        public clsPersonne personne = new clsPersonne();
+
         public frmGestionDesPersonnes()
         {
             InitializeComponent();
@@ -20,7 +22,7 @@ namespace Infomil
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(testmodel);
+           
         }
 
         private void btnVisualiser_Click(object sender, EventArgs e)
@@ -41,6 +43,11 @@ namespace Infomil
         private void btnQuitter_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmGestionDesPersonnes_Load(object sender, EventArgs e)
+        {
+            var t = personne;
         }
     }
 }

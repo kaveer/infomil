@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace AccesAuxDonnees
 {
-  public abstract class clsPersonnesAccesDonnees
-   {
+    public abstract class clsPersonnesAccesDonnees
+    {
         public abstract void CreerPersonnes();
         public abstract void RecupererListePersonnes();
         public abstract void SupprimerPersonne();
@@ -17,22 +17,37 @@ namespace AccesAuxDonnees
         public DataTable AuthentifierPersonne(string utilisatueur, string motDePasse)
         {
             DataTable resultat = new DataTable();
+            clsCommunAccesDonnees commun = new clsCommunAccesDonnees();
+            SqlConnection connexion = new SqlConnection();
 
             try
             {
-                clsCommunAccesDonnees commun = new clsCommunAccesDonnees();
-                SqlConnection connexion = new SqlConnection();
+                
 
                 connexion = commun.OuvirConnexion();
                 if (connexion == null)
                     throw new Exception();
 
+                SqlCommand command = new SqlCommand("tblPersonnesRechercherParUtilisateurMotDePasse", connexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                command.Parameters.Add(new SqlParameter("@utilisateur", Convert.ToInt32(utilisatueur)));
+                command.Parameters.Add(new SqlParameter("@motdepasse", motDePasse));
+
+                resultat.Load(command.ExecuteReader());
+                if (resultat == null || resultat.Rows.Count <= 0)
+                    throw new Exception();
 
                 return resultat;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return resultat = null;
+            }
+            finally
+            {
+                commun.FermerConnexion();
             }
         }
 
@@ -45,5 +60,5 @@ namespace AccesAuxDonnees
         {
 
         }
-   }
+    }
 }

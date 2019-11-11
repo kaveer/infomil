@@ -16,5 +16,15 @@ namespace Infomil
         {
             InitializeComponent();
         }
+
+        private void rdbHomme_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdbFemme_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

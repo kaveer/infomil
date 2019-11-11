@@ -1,5 +1,6 @@
 ﻿using ConteneurDeDonnees;
 using LogiqueMetier;
+using LogiqueMetier.Assistant;
 using System;
 using System.Windows.Forms;
 
@@ -21,31 +22,31 @@ namespace Infomil
                 clsPersonne authentifier = new clsPersonne();
                 clsGestionPersonnes gestion;
 
-                if (string.IsNullOrWhiteSpace(utilisatueur) && string.IsNullOrWhiteSpace(motDePasse))
-                    throw new Exception("nom de utilisateur obligatoire");
+                if (string.IsNullOrWhiteSpace(utilisatueur) || (string.IsNullOrWhiteSpace(utilisatueur) && string.IsNullOrWhiteSpace(motDePasse)))
+                    throw new Exception(clsCommun.ErreurUtilisateur);
 
                 gestion = new clsGestionSuperviseur();
                 authentifier = gestion.AuthentifierPersonne(utilisatueur, motDePasse);
 
                 if (authentifier == null)
-                    throw new Exception("Utilidateur et mot de passe invalide");
+                    throw new Exception(clsCommun.ErreurEntree);
 
                 switch (authentifier.eNiveau)
                 {
                     case clsPersonne.enuNiveau.iCLIENT:
                         SupprimerEntree();
-
+                        Routage(authentifier);
                         break;
                     case clsPersonne.enuNiveau.iCHEF_RAYON:
                         SupprimerEntree();
-
+                        Routage(authentifier);
                         break;
                     case clsPersonne.enuNiveau.iSUPERVISEUR:
                         SupprimerEntree();
-
+                        Routage(authentifier);
                         break;
                     default:
-                        throw new Exception("Utilisateur invalide");
+                        throw new Exception(clsCommun.ErreurUtilisateurInvalide);
                 }
 
             }
@@ -55,17 +56,40 @@ namespace Infomil
                 MessageBox.Show(ex.Message);
             }
 
+        }
 
-            //if (true)
-            //{
+        private void Routage(clsPersonne personne)
+        {
+            frmGestionDesPersonnes gestionDesPersonnes = new frmGestionDesPersonnes();
+            frmInfoClients infoClients = new frmInfoClients();
 
-            //}
-            //frmGestionDesPersonnes r = new frmGestionDesPersonnes();
-            //r.btnAjouter.Text = "sdfvdfbv";
-            //r.Text = "fgbfgnswert6y";
-            //r.Show();
-            //r.testmodel = "dfgvdfgdfb";
-            //this.Hide();
+            switch (personne.eNiveau)
+            {
+                case clsPersonne.enuNiveau.iCLIENT:
+                    infoClients.Text = clsCommun.TitreModeclient;
+                    infoClients.btnPrecedent.Hide();
+                    infoClients.btnSuivant.Hide();
+                    infoClients.Show();
+                    this.Hide();
+                    break;
+                case clsPersonne.enuNiveau.iCHEF_RAYON:
+                    gestionDesPersonnes.Text = clsCommun.TitreModeChefRayon;
+                    gestionDesPersonnes.lblInformation.Text = clsCommun.InformationModeChefRayon;
+                    gestionDesPersonnes.personne = personne;
+                    gestionDesPersonnes.btnAjouter.Hide();
+                    gestionDesPersonnes.btnSupprimer.Hide();
+                    gestionDesPersonnes.btnVisualiser.Text = "Modifier";
+                    gestionDesPersonnes.Show();
+                    this.Hide();
+                    break;
+                default:
+                    gestionDesPersonnes.Text = clsCommun.TitreModeSuperviseur;
+                    gestionDesPersonnes.lblInformation.Text = clsCommun.InformationModeSuperviseur;
+                    gestionDesPersonnes.personne = personne;
+                    gestionDesPersonnes.Show();
+                    this.Hide();
+                    break;
+            }
         }
 
         private void SupprimerEntree()

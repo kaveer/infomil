@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblInformation = new System.Windows.Forms.Label();
             this.dgDetaileClient = new System.Windows.Forms.DataGridView();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnVisualiser = new System.Windows.Forms.Button();
@@ -42,7 +42,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblInformation);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(775, 47);
@@ -50,14 +50,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information";
             // 
-            // label1
+            // lblInformation
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(356, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Superviseur - Acces aux donnees de tous les rayons et clients du magasin";
+            this.lblInformation.AutoSize = true;
+            this.lblInformation.Location = new System.Drawing.Point(7, 20);
+            this.lblInformation.Name = "lblInformation";
+            this.lblInformation.Size = new System.Drawing.Size(30, 13);
+            this.lblInformation.TabIndex = 0;
+            this.lblInformation.Text = "cons";
             // 
             // dgDetaileClient
             // 
@@ -130,7 +130,8 @@
             this.Controls.Add(this.dgDetaileClient);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmGestionDesPersonnes";
-            this.Text = "Gestion des Personnes";
+            this.Text = "cons";
+            this.Load += new System.EventHandler(this.frmGestionDesPersonnes_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetaileClient)).EndInit();
@@ -141,12 +142,12 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgDetaileClient;
-        private System.Windows.Forms.Button btnVisualiser;
-        private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.Button btnSeDeconnecter;
         public System.Windows.Forms.Button btnAjouter;
+        public System.Windows.Forms.Label lblInformation;
+        public System.Windows.Forms.Button btnVisualiser;
+        public System.Windows.Forms.Button btnSupprimer;
     }
 }

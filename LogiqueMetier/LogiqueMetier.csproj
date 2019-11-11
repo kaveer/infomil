@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assistant\clsCommun.cs" />
     <Compile Include="clsGestionChefRayon.cs" />
     <Compile Include="clsGestionPersonnes.cs" />
     <Compile Include="clsGestionSuperviseur.cs" />
