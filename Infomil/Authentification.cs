@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ConteneurDeDonnees;
+using LogiqueMetier;
+using System;
 using System.Windows.Forms;
 
 namespace Infomil
@@ -19,13 +14,64 @@ namespace Infomil
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string utilisatueur = txtUtilisateur.Text.Trim();
+                string motDePasse = txtMotDePasse.Text.Trim();
+                clsPersonne authentifier = new clsPersonne();
+                clsGestionPersonnes gestion;
 
-            frmGestionDesPersonnes r = new frmGestionDesPersonnes();
-            r.btnAjouter.Text = "sdfvdfbv";
-            r.Text = "fgbfgnswert6y";
-            r.Show();
-            r.testmodel = "dfgvdfgdfb";
-            this.Hide();
+                if (string.IsNullOrWhiteSpace(utilisatueur) && string.IsNullOrWhiteSpace(motDePasse))
+                    throw new Exception("nom de utilisateur obligatoire");
+
+                gestion = new clsGestionSuperviseur();
+                authentifier = gestion.AuthentifierPersonne(utilisatueur, motDePasse);
+
+                if (authentifier == null)
+                    throw new Exception("Utilidateur et mot de passe invalide");
+
+                switch (authentifier.eNiveau)
+                {
+                    case clsPersonne.enuNiveau.iCLIENT:
+                        SupprimerEntree();
+
+                        break;
+                    case clsPersonne.enuNiveau.iCHEF_RAYON:
+                        SupprimerEntree();
+
+                        break;
+                    case clsPersonne.enuNiveau.iSUPERVISEUR:
+                        SupprimerEntree();
+
+                        break;
+                    default:
+                        throw new Exception("Utilisateur invalide");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                SupprimerEntree();
+                MessageBox.Show(ex.Message);
+            }
+
+
+            //if (true)
+            //{
+
+            //}
+            //frmGestionDesPersonnes r = new frmGestionDesPersonnes();
+            //r.btnAjouter.Text = "sdfvdfbv";
+            //r.Text = "fgbfgnswert6y";
+            //r.Show();
+            //r.testmodel = "dfgvdfgdfb";
+            //this.Hide();
+        }
+
+        private void SupprimerEntree()
+        {
+            txtMotDePasse.Clear();
+            txtUtilisateur.Clear();
         }
 
         private void btnAbandonner_Click(object sender, EventArgs e)

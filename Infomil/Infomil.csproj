@@ -96,5 +96,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConteneurDeDonnees\ConteneurDeDonnees.csproj">
+      <Project>{2976f629-6ccc-4aaf-976a-24839a88f078}</Project>
+      <Name>ConteneurDeDonnees</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogiqueMetier\LogiqueMetier.csproj">
+      <Project>{c93b2447-a368-4283-8452-9684b62128e9}</Project>
+      <Name>LogiqueMetier</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

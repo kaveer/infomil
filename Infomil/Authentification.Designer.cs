@@ -31,9 +31,9 @@
             this.btnValider = new System.Windows.Forms.Button();
             this.btnAbandonner = new System.Windows.Forms.Button();
             this.lblUtilisateur = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtUtilisateur = new System.Windows.Forms.TextBox();
             this.lblMotDePasse = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtMotDePasse = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnValider
@@ -65,12 +65,12 @@
             this.lblUtilisateur.TabIndex = 2;
             this.lblUtilisateur.Text = "Utilisateur";
             // 
-            // textBox1
+            // txtUtilisateur
             // 
-            this.textBox1.Location = new System.Drawing.Point(107, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(367, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtUtilisateur.Location = new System.Drawing.Point(107, 10);
+            this.txtUtilisateur.Name = "txtUtilisateur";
+            this.txtUtilisateur.Size = new System.Drawing.Size(367, 20);
+            this.txtUtilisateur.TabIndex = 3;
             // 
             // lblMotDePasse
             // 
@@ -81,21 +81,21 @@
             this.lblMotDePasse.TabIndex = 4;
             this.lblMotDePasse.Text = "Mot de passe";
             // 
-            // textBox2
+            // txtMotDePasse
             // 
-            this.textBox2.Location = new System.Drawing.Point(107, 36);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(367, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtMotDePasse.Location = new System.Drawing.Point(107, 36);
+            this.txtMotDePasse.Name = "txtMotDePasse";
+            this.txtMotDePasse.Size = new System.Drawing.Size(367, 20);
+            this.txtMotDePasse.TabIndex = 5;
             // 
             // frmAuthentification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(510, 100);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtMotDePasse);
             this.Controls.Add(this.lblMotDePasse);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtUtilisateur);
             this.Controls.Add(this.lblUtilisateur);
             this.Controls.Add(this.btnAbandonner);
             this.Controls.Add(this.btnValider);
@@ -111,9 +111,9 @@
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Button btnAbandonner;
         private System.Windows.Forms.Label lblUtilisateur;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtUtilisateur;
         private System.Windows.Forms.Label lblMotDePasse;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtMotDePasse;
     }
 }
 
