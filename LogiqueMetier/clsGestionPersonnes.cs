@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace LogiqueMetier
 {
@@ -20,8 +21,11 @@ namespace LogiqueMetier
 
             try
             {
-                clsSuperviseurAccesDonnees personne = new clsSuperviseurAccesDonnees();
-                
+                clsPersonnesAccesDonnees gestion;
+                DataTable tableDeDonnees = new DataTable();
+
+                gestion = new clsSuperviseurAccesDonnees();
+                tableDeDonnees = gestion.AuthentifierPersonne(utilisatueur, motDePasse);
                 return resultat;
             }
             catch (Exception)
