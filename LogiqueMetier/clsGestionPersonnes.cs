@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ConteneurDeDonnees;
+using AccesAuxDonnees;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,20 @@ namespace LogiqueMetier
         public abstract void RecupererListePersonnes();
         public abstract void SupprimerPersonne();
 
-        public void AuthentifierPersonne()
+        public clsPersonne AuthentifierPersonne(string utilisatueur, string motDePasse)
         {
+            clsPersonne resultat = new clsPersonne();
 
+            try
+            {
+                clsSuperviseurAccesDonnees personne = new clsSuperviseurAccesDonnees();
+                
+                return resultat;
+            }
+            catch (Exception)
+            {
+                return resultat = null;
+            }
         }
 
         public void ModifierPersonnes()
