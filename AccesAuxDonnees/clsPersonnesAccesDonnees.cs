@@ -11,7 +11,7 @@ namespace AccesAuxDonnees
     public abstract class clsPersonnesAccesDonnees
     {
         public abstract void CreerPersonnes();
-        public abstract void RecupererListePersonnes();
+        public abstract DataTable RecupererListePersonnes(int iID = 0);
         public abstract void SupprimerPersonne();
 
         public DataTable AuthentifierPersonne(string utilisatueur, string motDePasse)

@@ -1,21 +1,30 @@
-﻿using System;
+﻿using AccesAuxDonnees;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LogiqueMetier
 {
-    class clsGestionChefRayon : clsGestionPersonnes
+    public class clsGestionChefRayon : clsGestionPersonnes
     {
+        private clsPersonnesAccesDonnees accesDonnees;
+
         public override void CreerPersonne()
         {
             throw new NotImplementedException();
         }
 
-        public override void RecupererListePersonnes()
+        public override DataTable RecupererListePersonnes(int iID = 0)
         {
-            throw new NotImplementedException();
+            DataTable resultat = new DataTable();
+            accesDonnees = new clsSuperviseurAccesDonnees();
+
+            resultat = accesDonnees.RecupererListePersonnes(iID);
+
+            return resultat;
         }
 
         public override void SupprimerPersonne()

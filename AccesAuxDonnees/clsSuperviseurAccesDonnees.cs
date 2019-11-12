@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace AccesAuxDonnees
             throw new NotImplementedException();
         }
 
-        public override void RecupererListePersonnes()
+        public override DataTable RecupererListePersonnes(int iID = 0)
         {
             throw new NotImplementedException();
         }

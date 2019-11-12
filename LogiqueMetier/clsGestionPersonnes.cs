@@ -12,7 +12,7 @@ namespace LogiqueMetier
     public abstract class clsGestionPersonnes
     {
         public abstract void CreerPersonne();
-        public abstract void RecupererListePersonnes();
+        public abstract DataTable RecupererListePersonnes(int iID = 0);
         public abstract void SupprimerPersonne();
 
         public clsPersonne AuthentifierPersonne(string utilisatueur, string motDePasse)
