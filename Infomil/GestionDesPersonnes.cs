@@ -60,10 +60,10 @@ namespace Infomil
                     case clsPersonne.enuNiveau.iCLIENT:
                         throw new Exception();
                     case clsPersonne.enuNiveau.iCHEF_RAYON:
-                        dgDetaileClient.DataSource = RecupereListeClients(personne.iID);
+                        dgDetaileClient.DataSource = RecupereListeClients(personne);
                         break;
                     case clsPersonne.enuNiveau.iSUPERVISEUR:
-                        dgDetaileClient.DataSource = RecupereListeClients();
+                        dgDetaileClient.DataSource = RecupereListeClients(personne);
                         break;
                     default:
                         throw new Exception();
@@ -79,19 +79,20 @@ namespace Infomil
             }
         }
 
-        private DataTable RecupereListeClients(int iID = 0)
+        private DataTable RecupereListeClients(clsPersonne personne)
         {
             DataTable resultat = new DataTable();
 
-            if (iID == 0)
+            switch (personne.eNiveau)
             {
-                gestion = new clsGestionSuperviseur();
-                resultat = gestion.RecupererListePersonnes();
-            }
-            else
-            {
-                gestion = new clsGestionChefRayon();
-                resultat = gestion.RecupererListePersonnes(iID);
+                case clsPersonne.enuNiveau.iSUPERVISEUR:
+                    gestion = new clsGestionSuperviseur();
+                    resultat = gestion.RecupererListePersonnes(personne.iID);
+                    break;
+                case clsPersonne.enuNiveau.iCHEF_RAYON:
+                    gestion = new clsGestionChefRayon();
+                    resultat = gestion.RecupererListePersonnes(personne.iID);
+                    break;
             }
 
             return resultat;

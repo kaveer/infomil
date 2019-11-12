@@ -17,10 +17,10 @@ namespace LogiqueMetier
             throw new NotImplementedException();
         }
 
-        public override DataTable RecupererListePersonnes(int iID = 0)
+        public override DataTable RecupererListePersonnes(int iID)
         {
             DataTable resultat = new DataTable();
-            accesDonnees = new clsSuperviseurAccesDonnees();
+            accesDonnees = new clsChefRayonAccesDonnees();
 
             resultat = accesDonnees.RecupererListePersonnes(iID);
 
