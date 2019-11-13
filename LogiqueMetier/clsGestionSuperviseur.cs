@@ -27,7 +27,7 @@ namespace LogiqueMetier
             return resultat;
         }
 
-        public override void SupprimerPersonne()
+        public override void SupprimerPersonne(int iID)
         {
             throw new NotImplementedException();
         }

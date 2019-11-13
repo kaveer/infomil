@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConteneurDeDonnees;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,9 @@ namespace Infomil
 {
     public partial class frmInfoClients : Form
     {
+        public clsPersonne personne = new clsPersonne();
+        public clsPersonne mode = new clsPersonne();
+
         public frmInfoClients()
         {
             InitializeComponent();

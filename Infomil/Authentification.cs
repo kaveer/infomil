@@ -69,6 +69,7 @@ namespace Infomil
                     infoClients.Text = clsCommun.TitreModeclient;
                     infoClients.btnPrecedent.Hide();
                     infoClients.btnSuivant.Hide();
+                    infoClients.personne = personne;
                     infoClients.Show();
                     this.Hide();
                     break;
