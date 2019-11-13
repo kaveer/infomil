@@ -13,6 +13,7 @@ namespace LogiqueMetier.Assistant
         public const string ErreurUtilisateurInvalide = "Utilisateur invalide";
         public const string ErreurGeneriqueQuitterApplication = "une erreur inconnue s'est produite. Rediriger vers authentification";
         public const string ErreurClientNonSelectionner = "Selection de client obligatoire";
+        public const string ErreurApplicationGeneric = "Erreur application";
 
         public const string SuccesSupprimerClient = "suppression du client avec succès";
 

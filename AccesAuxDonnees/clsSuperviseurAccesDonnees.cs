@@ -39,9 +39,50 @@ namespace AccesAuxDonnees
             return resultat;
         }
 
-        public override void SupprimerPersonne()
+        public override void SupprimerPersonne(int iID)
         {
-            throw new NotImplementedException();
+            SuppprimerPersonneParID(iID);
+            SupprimerPanierParID(iID);
+        }
+
+        private void SupprimerPanierParID(int iID)
+        {
+            clsCommunAccesDonnees commun = new clsCommunAccesDonnees();
+            SqlConnection connexion = new SqlConnection();
+
+
+            connexion = commun.OuvirConnexion();
+            if (connexion == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblPanierSupprimerParId", connexion)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@idpersonne", iID));
+            command.ExecuteNonQuery();
+
+            commun.FermerConnexion();
+        }
+
+        private void SuppprimerPersonneParID(int iID)
+        {
+            clsCommunAccesDonnees commun = new clsCommunAccesDonnees();
+            SqlConnection connexion = new SqlConnection();
+
+
+            connexion = commun.OuvirConnexion();
+            if (connexion == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblPersonnesSupprimerParId", connexion)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@idpersonne", iID));
+            command.ExecuteNonQuery();
+
+            commun.FermerConnexion();
         }
     }
 }

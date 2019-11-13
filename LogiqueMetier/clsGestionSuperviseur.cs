@@ -29,7 +29,8 @@ namespace LogiqueMetier
 
         public override void SupprimerPersonne(int iID)
         {
-            throw new NotImplementedException();
+            accesDonnees = new clsSuperviseurAccesDonnees();
+            accesDonnees.SupprimerPersonne(iID);
         }
     }
 }

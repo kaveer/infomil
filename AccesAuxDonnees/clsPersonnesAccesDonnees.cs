@@ -12,7 +12,7 @@ namespace AccesAuxDonnees
     {
         public abstract void CreerPersonnes();
         public abstract DataTable RecupererListePersonnes(int iID);
-        public abstract void SupprimerPersonne();
+        public abstract void SupprimerPersonne(int iID);
 
         public DataTable AuthentifierPersonne(string utilisatueur, string motDePasse)
         {

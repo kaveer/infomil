@@ -48,5 +48,11 @@
     <Compile Include="clsSuperviseurAccesDonnees.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConteneurDeDonnees\ConteneurDeDonnees.csproj">
+      <Project>{2976f629-6ccc-4aaf-976a-24839a88f078}</Project>
+      <Name>ConteneurDeDonnees</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
