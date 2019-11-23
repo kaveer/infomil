@@ -30,5 +30,35 @@ namespace Infomil
         {
 
         }
+
+        private void frmInfoClients_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnValider_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSuivant_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrecedent_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

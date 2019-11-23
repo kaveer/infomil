@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbFemme = new System.Windows.Forms.RadioButton();
+            this.rdbHomme = new System.Windows.Forms.RadioButton();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -45,8 +47,6 @@
             this.btnValider = new System.Windows.Forms.Button();
             this.btnPrecedent = new System.Windows.Forms.Button();
             this.btnSuivant = new System.Windows.Forms.Button();
-            this.rdbHomme = new System.Windows.Forms.RadioButton();
-            this.rdbFemme = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -71,6 +71,30 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fiche client";
+            // 
+            // rdbFemme
+            // 
+            this.rdbFemme.AutoSize = true;
+            this.rdbFemme.Location = new System.Drawing.Point(178, 70);
+            this.rdbFemme.Name = "rdbFemme";
+            this.rdbFemme.Size = new System.Drawing.Size(59, 17);
+            this.rdbFemme.TabIndex = 11;
+            this.rdbFemme.TabStop = true;
+            this.rdbFemme.Text = "Femme";
+            this.rdbFemme.UseVisualStyleBackColor = true;
+            this.rdbFemme.CheckedChanged += new System.EventHandler(this.rdbFemme_CheckedChanged);
+            // 
+            // rdbHomme
+            // 
+            this.rdbHomme.AutoSize = true;
+            this.rdbHomme.Location = new System.Drawing.Point(110, 70);
+            this.rdbHomme.Name = "rdbHomme";
+            this.rdbHomme.Size = new System.Drawing.Size(61, 17);
+            this.rdbHomme.TabIndex = 10;
+            this.rdbHomme.TabStop = true;
+            this.rdbHomme.Text = "Homme";
+            this.rdbHomme.UseVisualStyleBackColor = true;
+            this.rdbHomme.CheckedChanged += new System.EventHandler(this.rdbHomme_CheckedChanged);
             // 
             // dateTimePicker1
             // 
@@ -173,6 +197,7 @@
             this.btnQuitter.TabIndex = 2;
             this.btnQuitter.Text = "Quitter";
             this.btnQuitter.UseVisualStyleBackColor = true;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
             // btnAnnuler
             // 
@@ -182,6 +207,7 @@
             this.btnAnnuler.TabIndex = 3;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // btnValider
             // 
@@ -191,6 +217,7 @@
             this.btnValider.TabIndex = 4;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // btnPrecedent
             // 
@@ -200,6 +227,7 @@
             this.btnPrecedent.TabIndex = 6;
             this.btnPrecedent.Text = "< Precedent";
             this.btnPrecedent.UseVisualStyleBackColor = true;
+            this.btnPrecedent.Click += new System.EventHandler(this.btnPrecedent_Click);
             // 
             // btnSuivant
             // 
@@ -209,30 +237,7 @@
             this.btnSuivant.TabIndex = 7;
             this.btnSuivant.Text = "Suivant >";
             this.btnSuivant.UseVisualStyleBackColor = true;
-            // 
-            // rdbHomme
-            // 
-            this.rdbHomme.AutoSize = true;
-            this.rdbHomme.Location = new System.Drawing.Point(110, 70);
-            this.rdbHomme.Name = "rdbHomme";
-            this.rdbHomme.Size = new System.Drawing.Size(61, 17);
-            this.rdbHomme.TabIndex = 10;
-            this.rdbHomme.TabStop = true;
-            this.rdbHomme.Text = "Homme";
-            this.rdbHomme.UseVisualStyleBackColor = true;
-            this.rdbHomme.CheckedChanged += new System.EventHandler(this.rdbHomme_CheckedChanged);
-            // 
-            // rdbFemme
-            // 
-            this.rdbFemme.AutoSize = true;
-            this.rdbFemme.Location = new System.Drawing.Point(178, 70);
-            this.rdbFemme.Name = "rdbFemme";
-            this.rdbFemme.Size = new System.Drawing.Size(59, 17);
-            this.rdbFemme.TabIndex = 11;
-            this.rdbFemme.TabStop = true;
-            this.rdbFemme.Text = "Femme";
-            this.rdbFemme.UseVisualStyleBackColor = true;
-            this.rdbFemme.CheckedChanged += new System.EventHandler(this.rdbFemme_CheckedChanged);
+            this.btnSuivant.Click += new System.EventHandler(this.btnSuivant_Click);
             // 
             // frmInfoClients
             // 
@@ -248,6 +253,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmInfoClients";
             this.Text = "cons";
+            this.Load += new System.EventHandler(this.frmInfoClients_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
