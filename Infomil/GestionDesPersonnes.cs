@@ -31,7 +31,8 @@ namespace Infomil
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             frmInfoClients clients = new frmInfoClients();
-            clients.personne.iID = 0;
+            clients.personneTransaction.iID = 0;
+            clients.personne = personne;
             clients.btnPrecedent.Hide();
             clients.btnSuivant.Hide();
             clients.Text = clsCommun.TitreModeclient;
@@ -64,8 +65,8 @@ namespace Infomil
                         throw new Exception();
                 }
 
-                infoClients.mode = personne;
-                infoClients.personne.iID = iID;
+                infoClients.personne = personne;
+                infoClients.personneTransaction.iID = iID;
                 infoClients.Show();
                 this.Close();
             }

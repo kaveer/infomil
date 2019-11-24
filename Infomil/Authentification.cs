@@ -67,9 +67,10 @@ namespace Infomil
             {
                 case clsPersonne.enuNiveau.iCLIENT:
                     infoClients.Text = clsCommun.TitreModeclient;
+                    infoClients.personne = personne;
                     infoClients.btnPrecedent.Hide();
                     infoClients.btnSuivant.Hide();
-                    infoClients.personne = personne;
+                    infoClients.personneTransaction = personne;
                     infoClients.Show();
                     this.Hide();
                     break;

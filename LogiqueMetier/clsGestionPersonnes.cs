@@ -49,6 +49,16 @@ namespace LogiqueMetier
             }
         }
 
+        public void ModifierPersonnes()
+        {
+
+        }
+
+        public clsPanier RecupererPanierPersonne(int iID)
+        {
+            return null;
+        }
+
         private clsPersonne.enuSexe RecupereSexe(string sexe)
         {
             clsPersonne.enuSexe resultat = new clsPersonne.enuSexe();
@@ -97,16 +107,6 @@ namespace LogiqueMetier
                 return false;
 
             return resultat;
-        }
-
-        public void ModifierPersonnes()
-        {
-
-        }
-
-        public void RecupererPanierPersonne()
-        {
-
         }
 
     }

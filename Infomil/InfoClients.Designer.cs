@@ -31,17 +31,17 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdbFemme = new System.Windows.Forms.RadioButton();
             this.rdbHomme = new System.Windows.Forms.RadioButton();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dpDateNaissance = new System.Windows.Forms.DateTimePicker();
+            this.txtAddresse = new System.Windows.Forms.TextBox();
+            this.txtPrenom = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgPanier = new System.Windows.Forms.DataGridView();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
@@ -49,17 +49,17 @@
             this.btnSuivant = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPanier)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rdbFemme);
             this.groupBox1.Controls.Add(this.rdbHomme);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.dpDateNaissance);
+            this.groupBox1.Controls.Add(this.txtAddresse);
+            this.groupBox1.Controls.Add(this.txtPrenom);
+            this.groupBox1.Controls.Add(this.txtNom);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -96,35 +96,35 @@
             this.rdbHomme.UseVisualStyleBackColor = true;
             this.rdbHomme.CheckedChanged += new System.EventHandler(this.rdbHomme_CheckedChanged);
             // 
-            // dateTimePicker1
+            // dpDateNaissance
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(110, 172);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(660, 20);
-            this.dateTimePicker1.TabIndex = 9;
+            this.dpDateNaissance.Location = new System.Drawing.Point(110, 172);
+            this.dpDateNaissance.Name = "dpDateNaissance";
+            this.dpDateNaissance.Size = new System.Drawing.Size(660, 20);
+            this.dpDateNaissance.TabIndex = 9;
             // 
-            // textBox4
+            // txtAddresse
             // 
-            this.textBox4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox4.Location = new System.Drawing.Point(110, 93);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(660, 72);
-            this.textBox4.TabIndex = 8;
+            this.txtAddresse.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtAddresse.Location = new System.Drawing.Point(110, 93);
+            this.txtAddresse.Multiline = true;
+            this.txtAddresse.Name = "txtAddresse";
+            this.txtAddresse.Size = new System.Drawing.Size(660, 72);
+            this.txtAddresse.TabIndex = 8;
             // 
-            // textBox2
+            // txtPrenom
             // 
-            this.textBox2.Location = new System.Drawing.Point(110, 43);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(660, 20);
-            this.textBox2.TabIndex = 6;
+            this.txtPrenom.Location = new System.Drawing.Point(110, 43);
+            this.txtPrenom.Name = "txtPrenom";
+            this.txtPrenom.Size = new System.Drawing.Size(660, 20);
+            this.txtPrenom.TabIndex = 6;
             // 
-            // textBox1
+            // txtNom
             // 
-            this.textBox1.Location = new System.Drawing.Point(110, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(660, 20);
-            this.textBox1.TabIndex = 5;
+            this.txtNom.Location = new System.Drawing.Point(110, 17);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(660, 20);
+            this.txtNom.TabIndex = 5;
             // 
             // label5
             // 
@@ -173,7 +173,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.dgPanier);
             this.groupBox2.Location = new System.Drawing.Point(12, 240);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(776, 224);
@@ -181,13 +181,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Panier";
             // 
-            // dataGridView1
+            // dgPanier
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(764, 199);
-            this.dataGridView1.TabIndex = 0;
+            this.dgPanier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPanier.Location = new System.Drawing.Point(6, 19);
+            this.dgPanier.Name = "dgPanier";
+            this.dgPanier.Size = new System.Drawing.Size(764, 199);
+            this.dgPanier.TabIndex = 0;
             // 
             // btnQuitter
             // 
@@ -257,7 +257,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPanier)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -265,17 +265,17 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dpDateNaissance;
+        private System.Windows.Forms.TextBox txtAddresse;
+        private System.Windows.Forms.TextBox txtPrenom;
+        private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgPanier;
         private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Button btnValider;
