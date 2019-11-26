@@ -23,7 +23,7 @@ namespace AccesAuxDonnees
 
             try
             {
-                
+
 
                 connexion = commun.OuvirConnexion();
                 if (connexion == null)
@@ -57,9 +57,69 @@ namespace AccesAuxDonnees
 
         }
 
-        public void RecupererPanierPersonne()
+        public DataSet RecupererPanierPersonne(int iID)
         {
+            DataSet resultat = new DataSet();
+            DataTable personne = new DataTable();
+            DataTable article = new DataTable();
 
+            personne = RecupererPersonneParIid(iID);
+            article = RecupererArticleParIid(iID);
+
+            resultat.Tables.Add(personne);
+            resultat.Tables.Add(article);
+
+            return resultat;
+        }
+
+        private DataTable RecupererArticleParIid(int iID)
+        {
+            DataTable resultat = new DataTable();
+            clsCommunAccesDonnees commun = new clsCommunAccesDonnees();
+            SqlConnection connexion = new SqlConnection();
+
+            connexion = commun.OuvirConnexion();
+            if (connexion == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblPanierRecupererParId", connexion)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@iid", iID));
+
+            resultat.Load(command.ExecuteReader());
+            if (resultat == null || resultat.Rows.Count <= 0)
+                throw new Exception();
+
+            commun.FermerConnexion();
+
+            return resultat;
+        }
+
+        private DataTable RecupererPersonneParIid(int iID)
+        {
+            DataTable resultat = new DataTable();
+            clsCommunAccesDonnees commun = new clsCommunAccesDonnees();
+            SqlConnection connexion = new SqlConnection();
+
+            connexion = commun.OuvirConnexion();
+            if (connexion == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblPersonneRecupererParId", connexion)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@iid", iID));
+
+            resultat.Load(command.ExecuteReader());
+            if (resultat == null || resultat.Rows.Count <= 0)
+                throw new Exception();
+
+            commun.FermerConnexion();
+
+            return resultat;
         }
     }
 }

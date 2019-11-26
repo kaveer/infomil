@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using LogiqueMetier.Assistant;
 
 namespace LogiqueMetier
 {
@@ -56,7 +57,59 @@ namespace LogiqueMetier
 
         public clsPanier RecupererPanierPersonne(int iID)
         {
-            return null;
+            clsPanier resultat = new clsPanier();
+            DataSet dataSet = new DataSet();
+            clsPersonnesAccesDonnees gestion;
+
+            gestion = new clsSuperviseurAccesDonnees();
+            dataSet = gestion.RecupererPanierPersonne(iID);
+
+            if (dataSet?.Tables[0] == null || dataSet?.Tables[1] == null)
+                throw new Exception(clsCommun.ErreurGeneriqueQuitterApplication);
+            if (dataSet?.Tables[0]?.Rows.Count == 0)
+                throw new Exception(clsCommun.ErreurGeneriqueQuitterApplication);
+
+            resultat = AttribuerValeur(dataSet);
+            return resultat;
+        }
+
+        private clsPanier AttribuerValeur(DataSet dataSet)
+        {
+            clsPanier resultat = new clsPanier();
+
+            if (dataSet?.Tables[0]?.Rows.Count > 0)
+            {
+                resultat.objPersonnes = new clsPersonne()
+                {
+                    iID = Convert.ToInt32(dataSet.Tables[0].Rows[0][0]),
+                    eNiveau = RecupereNiveauUtilisateur(Convert.ToInt32(dataSet.Tables[0].Rows[0][1])),
+                    sNom = dataSet.Tables[0].Rows[0][2].ToString(),
+                    sPrenom = dataSet.Tables[0].Rows[0][3].ToString(),
+                    eSexe = RecupereSexe(dataSet.Tables[0].Rows[0][4].ToString()),
+                    sAdresse = dataSet.Tables[0].Rows[0][5].ToString(),
+                    dDateNaissance = Convert.ToDateTime(dataSet.Tables[0].Rows[0][3].ToString()),
+                };
+            }
+
+            if (dataSet?.Tables[1]?.Rows.Count > 0)
+            {
+                resultat.lstArticles = new List<clsArticle>();
+
+                foreach (DataRow item in dataSet.Tables[1].Rows)
+                {
+                    clsArticle article = new clsArticle()
+                    {
+                        sNom = item[0].ToString(),
+                        iQuantite = Convert.ToInt32(item[1]),
+                        rPrix = Convert.ToDecimal(item[2]),
+                    };
+
+                    article.rPrixTotal = article.rPrix * article.iQuantite;
+                    resultat.lstArticles.Add(article);
+                }
+            }
+
+            return resultat;
         }
 
         private clsPersonne.enuSexe RecupereSexe(string sexe)
