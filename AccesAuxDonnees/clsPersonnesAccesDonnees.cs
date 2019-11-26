@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConteneurDeDonnees;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,7 +11,7 @@ namespace AccesAuxDonnees
 {
     public abstract class clsPersonnesAccesDonnees
     {
-        public abstract void CreerPersonnes();
+        public abstract void CreerPersonnes(clsPersonne personne);
         public abstract DataTable RecupererListePersonnes(int iID);
         public abstract void SupprimerPersonne(int iID);
 

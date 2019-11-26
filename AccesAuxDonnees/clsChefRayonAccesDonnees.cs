@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConteneurDeDonnees;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,7 +11,7 @@ namespace AccesAuxDonnees
 {
     public class clsChefRayonAccesDonnees : clsPersonnesAccesDonnees
     {
-        public override void CreerPersonnes()
+        public override void CreerPersonnes(clsPersonne personne)
         {
             throw new NotImplementedException();
         }

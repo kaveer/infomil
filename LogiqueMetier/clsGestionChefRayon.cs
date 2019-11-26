@@ -1,4 +1,5 @@
 ﻿using AccesAuxDonnees;
+using ConteneurDeDonnees;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,7 +13,7 @@ namespace LogiqueMetier
     {
         private clsPersonnesAccesDonnees accesDonnees;
 
-        public override void CreerPersonne()
+        public override void CreerPersonne(clsPersonne personne)
         {
             throw new NotImplementedException();
         }

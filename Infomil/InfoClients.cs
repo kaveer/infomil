@@ -205,11 +205,40 @@ namespace Infomil
                 if (personneTransaction == null || personneTransaction.iID < 0)
                     throw new Exception(clsCommun.ErreurApplicationGeneric);
 
-                switch (personne.)
+                if(!EstValabe())
                 {
-                    default:
-                        break;
+                    MessageBox.Show(clsCommun.ErreurValidationClients);
+                    return;
                 }
+
+                switch (personne.eNiveau)
+                {
+
+                    case clsPersonne.enuNiveau.iSUPERVISEUR:
+                    case clsPersonne.enuNiveau.iCLIENT:
+                        if (personneTransaction.iID == 0 && personne.eNiveau == clsPersonne.enuNiveau.iCLIENT)
+                            goto default;
+
+                        gestion = new clsGestionSuperviseur();
+                        if (personneTransaction.iID == 0)
+                            gestion.CreerPersonne(personneTransaction);
+                        else
+                            gestion.ModifierPersonnes(personneTransaction);
+
+                        break;
+                    case clsPersonne.enuNiveau.iCHEF_RAYON:
+                        if (personneTransaction.iID == 0)
+                            goto default;
+
+                        gestion = new clsGestionChefRayon();
+                        gestion.ModifierPersonnes(personneTransaction);
+
+                        break;
+                    default:
+                        throw new Exception(clsCommun.ErreurUtilisateurInvalide);
+                }
+
+
 
             }
             catch (Exception ex)
@@ -219,6 +248,33 @@ namespace Infomil
                 authentification.Show();
                 this.Hide();
             }
+        }
+
+        private bool EstValabe()
+        {
+            bool resultat = true;
+
+            if (string.IsNullOrWhiteSpace(txtNom.Text))
+                return false;
+            if (string.IsNullOrWhiteSpace(txtPrenom.Text))
+                return false;
+            if (string.IsNullOrWhiteSpace(txtAddresse.Text))
+                return false;
+            if (!rdbHomme.Checked && !rdbFemme.Checked)
+                return false;
+
+            personneTransaction.sNom = txtNom.Text.Trim();
+            personneTransaction.sPrenom = txtPrenom.Text.Trim();
+            personneTransaction.sAdresse = txtAddresse.Text.Trim();
+
+            if (rdbHomme.Checked)
+                personneTransaction.eSexe = clsPersonne.enuSexe.iHOMME;
+            else
+                personneTransaction.eSexe = clsPersonne.enuSexe.iFEMME;
+
+            personneTransaction.dDateNaissance = dpDateNaissance.Value;
+
+            return resultat;
         }
 
         private void btnSuivant_Click(object sender, EventArgs e)

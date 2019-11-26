@@ -11,7 +11,7 @@ namespace LogiqueMetier
 {
     public abstract class clsGestionPersonnes
     {
-        public abstract void CreerPersonne();
+        public abstract void CreerPersonne(clsPersonne personne);
         public abstract DataTable RecupererListePersonnes(int iID);
         public abstract void SupprimerPersonne(int iID);
 
@@ -49,7 +49,7 @@ namespace LogiqueMetier
             }
         }
 
-        public void ModifierPersonnes()
+        public void ModifierPersonnes(clsPersonne personne)
         {
 
         }

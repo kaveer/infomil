@@ -15,6 +15,7 @@ namespace LogiqueMetier.Assistant
         public const string ErreurClientNonSelectionner = "Selection de client obligatoire";
         public const string ErreurApplicationGeneric = "Erreur application";
         public const string ErreurRecupererPersonne = "Erreur d'application en recuperant les informations du client";
+        public const string ErreurValidationClients = "informations client manquantes";
 
         public const string SuccesSupprimerClient = "suppression du client avec succès";
 
