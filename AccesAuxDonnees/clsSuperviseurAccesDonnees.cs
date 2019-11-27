@@ -13,7 +13,28 @@ namespace AccesAuxDonnees
     {
         public override void CreerPersonnes(clsPersonne personne)
         {
-            throw new NotImplementedException();
+            clsCommunAccesDonnees commun = new clsCommunAccesDonnees();
+            SqlConnection connexion = new SqlConnection();
+
+
+            connexion = commun.OuvirConnexion();
+            if (connexion == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblPersonneAjouter", connexion)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@nom", personne.sNom));
+            command.Parameters.Add(new SqlParameter("@prenom", personne.sPrenom));
+            command.Parameters.Add(new SqlParameter("@adresses", personne.sAdresse));
+            command.Parameters.Add(new SqlParameter("@naissance", personne.dDateNaissance));
+            command.Parameters.Add(new SqlParameter("@niveau", (int)clsPersonne.enuNiveau.iCLIENT));
+            command.Parameters.Add(new SqlParameter("@sexe", personne.eSexe == clsPersonne.enuSexe.iHOMME? "M": "F"));
+
+            command.ExecuteNonQuery();
+
+            commun.FermerConnexion();
         }
 
         public override DataTable RecupererListePersonnes(int iID)
