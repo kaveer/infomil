@@ -15,6 +15,8 @@ namespace LogiqueMetier
         public abstract void CreerPersonne(clsPersonne personne);
         public abstract DataTable RecupererListePersonnes(int iID);
         public abstract void SupprimerPersonne(int iID);
+        clsPersonnesAccesDonnees gestion;
+
 
         public clsPersonne AuthentifierPersonne(string utilisatueur, string motDePasse)
         {
@@ -25,7 +27,6 @@ namespace LogiqueMetier
                 if (!Valider(utilisatueur, motDePasse))
                     throw new Exception();
 
-                clsPersonnesAccesDonnees gestion;
                 DataTable tableDeDonnees = new DataTable();
 
                 gestion = new clsSuperviseurAccesDonnees();
@@ -52,15 +53,15 @@ namespace LogiqueMetier
 
         public void ModifierPersonnes(clsPersonne personne)
         {
-
+            gestion = new clsSuperviseurAccesDonnees();
+            gestion.MAJPersonne(personne);
         }
 
         public clsPanier RecupererPanierPersonne(int iID)
         {
             clsPanier resultat = new clsPanier();
             DataSet dataSet = new DataSet();
-            clsPersonnesAccesDonnees gestion;
-
+            
             gestion = new clsSuperviseurAccesDonnees();
             dataSet = gestion.RecupererPanierPersonne(iID);
 

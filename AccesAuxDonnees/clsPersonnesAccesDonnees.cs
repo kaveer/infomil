@@ -52,9 +52,30 @@ namespace AccesAuxDonnees
             }
         }
 
-        public void MAJPersonne()
+        public void MAJPersonne(clsPersonne personne)
         {
+            clsCommunAccesDonnees commun = new clsCommunAccesDonnees();
+            SqlConnection connexion = new SqlConnection();
 
+
+            connexion = commun.OuvirConnexion();
+            if (connexion == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblPersonneMisAJour", connexion)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@idpersonne", personne.iID));
+            command.Parameters.Add(new SqlParameter("@nom", personne.sNom));
+            command.Parameters.Add(new SqlParameter("@prenom", personne.sPrenom));
+            command.Parameters.Add(new SqlParameter("@adresses", personne.sAdresse));
+            command.Parameters.Add(new SqlParameter("@naissance", personne.dDateNaissance));
+            command.Parameters.Add(new SqlParameter("@niveau", (int)clsPersonne.enuNiveau.iCLIENT));
+            command.Parameters.Add(new SqlParameter("@sexe", personne.eSexe == clsPersonne.enuSexe.iHOMME ? "M" : "F"));
+            command.ExecuteNonQuery();
+
+            commun.FermerConnexion();
         }
 
         public DataSet RecupererPanierPersonne(int iID)
