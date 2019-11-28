@@ -20,6 +20,7 @@ namespace Infomil
         List<int> listePersonneId = new List<int>();
         clsGestionPersonnes gestion;
         clsPanier panier = new clsPanier();
+        int ConteurIndice;
 
 
         public frmInfoClients()
@@ -69,7 +70,7 @@ namespace Infomil
             }
         }
 
-        private void RecupererPersonneParNiveau(bool estAnnuler = false)
+        private void RecupererPersonneParNiveau(bool SauterRecupererlistPersonne = false)
         {
             switch (personne.eNiveau)
             {
@@ -77,18 +78,21 @@ namespace Infomil
                 case clsPersonne.enuNiveau.iSUPERVISEUR:
                     gestion = new clsGestionSuperviseur();
                     panier = gestion.RecupererPanierPersonne(personneTransaction.iID);
-                    if (!estAnnuler)
+                    if (!SauterRecupererlistPersonne && personne.eNiveau == clsPersonne.enuNiveau.iSUPERVISEUR)
                         listePersonneId = RecupererListPersonParId(personne);
                     break;
                 case clsPersonne.enuNiveau.iCHEF_RAYON:
                     gestion = new clsGestionChefRayon();
                     panier = gestion.RecupererPanierPersonne(personneTransaction.iID);
-                    if (!estAnnuler)
+                    if (!SauterRecupererlistPersonne)
                         listePersonneId = RecupererListPersonParId(personne);
                     break;
                 default:
                     throw new Exception(clsCommun.ErreurApplicationGeneric);
             }
+
+            if (listePersonneId.Count > 0)
+                ConteurIndice = listePersonneId.FindIndex(x => x == personneTransaction.iID);
         }
 
         private List<int> RecupererListPersonParId(clsPersonne personne)
@@ -205,7 +209,7 @@ namespace Infomil
                 if (personneTransaction == null || personneTransaction.iID < 0)
                     throw new Exception(clsCommun.ErreurApplicationGeneric);
 
-                if(!EstValabe())
+                if (!ValiderEtAttribuerValeur())
                 {
                     MessageBox.Show(clsCommun.ErreurValidationClients);
                     return;
@@ -250,7 +254,7 @@ namespace Infomil
             }
         }
 
-        private bool EstValabe()
+        private bool ValiderEtAttribuerValeur()
         {
             bool resultat = true;
 
@@ -279,12 +283,44 @@ namespace Infomil
 
         private void btnSuivant_Click(object sender, EventArgs e)
         {
+            try
+            {
+                ConteurIndice++;
+                RecupererIdParIndice(ConteurIndice, "suivant");
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnPrecedent_Click(object sender, EventArgs e)
         {
+            try
+            {
+                ConteurIndice--;
+                RecupererIdParIndice(ConteurIndice, "precedent");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
+        private void RecupererIdParIndice(int indice, string SufixerreurSufix)
+        {
+
+            if (listePersonneId.Count == 0)
+                throw new Exception(string.Format(clsCommun.ErreurNavigationClient, "pour naviguer"));
+            if (indice < 0)
+                throw new Exception(string.Format(clsCommun.ErreurNavigationClient, SufixerreurSufix));
+            if (indice > (listePersonneId.Count - 1))
+                throw new Exception(string.Format(clsCommun.ErreurNavigationClient, SufixerreurSufix));
+
+            //int iID = listePersonneId[indexCounter];
+            personneTransaction.iID = listePersonneId.ElementAt(indice);
+            RecupererPersonneParNiveau(true);
         }
     }
 }
