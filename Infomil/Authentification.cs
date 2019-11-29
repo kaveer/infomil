@@ -8,11 +8,19 @@ namespace Infomil
 {
     public partial class frmAuthentification : Form
     {
+        /// <summary>
+        /// initialization
+        /// </summary>
         public frmAuthentification()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Button event to validate ans exit application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnValider_Click(object sender, EventArgs e)
         {
             try
@@ -58,6 +66,11 @@ namespace Infomil
 
         }
 
+        private void btnAbandonner_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void Routage(clsPersonne personne)
         {
             frmGestionDesPersonnes gestionDesPersonnes = new frmGestionDesPersonnes();
@@ -100,9 +113,6 @@ namespace Infomil
             txtUtilisateur.Clear();
         }
 
-        private void btnAbandonner_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+       
     }
 }

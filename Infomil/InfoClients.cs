@@ -18,7 +18,6 @@ namespace Infomil
         clsPanier panier = new clsPanier();
         int ConteurIndice;
 
-
         public frmInfoClients()
         {
             InitializeComponent();
@@ -63,103 +62,6 @@ namespace Infomil
                 frmAuthentification authentification = new frmAuthentification();
                 authentification.Show();
                 this.Hide();
-            }
-        }
-
-        private void RecupererPersonneParNiveau(bool SauterRecupererlistPersonne = false)
-        {
-            switch (personne.eNiveau)
-            {
-                case clsPersonne.enuNiveau.iCLIENT:
-                case clsPersonne.enuNiveau.iSUPERVISEUR:
-                    gestion = new clsGestionSuperviseur();
-                    panier = gestion.RecupererPanierPersonne(personneTransaction.iID);
-                    if (!SauterRecupererlistPersonne && personne.eNiveau == clsPersonne.enuNiveau.iSUPERVISEUR)
-                        listePersonneId = RecupererListPersonParId(personne);
-                    break;
-                case clsPersonne.enuNiveau.iCHEF_RAYON:
-                    gestion = new clsGestionChefRayon();
-                    panier = gestion.RecupererPanierPersonne(personneTransaction.iID);
-                    if (!SauterRecupererlistPersonne)
-                        listePersonneId = RecupererListPersonParId(personne);
-                    break;
-                default:
-                    throw new Exception(clsCommun.ErreurApplicationGeneric);
-            }
-
-            if (listePersonneId.Count > 0)
-                ConteurIndice = listePersonneId.FindIndex(x => x == personneTransaction.iID);
-        }
-
-        private List<int> RecupererListPersonParId(clsPersonne personne)
-        {
-            List<int> resultat = new List<int>();
-            clsGestionPersonnes gestion;
-            DataTable tableDeDonnees = new DataTable();
-
-            switch (personne.eNiveau)
-            {
-                case clsPersonne.enuNiveau.iCLIENT:
-                    break;
-                case clsPersonne.enuNiveau.iCHEF_RAYON:
-                    gestion = new clsGestionChefRayon();
-                    tableDeDonnees = gestion.RecupererListePersonnes(personne.iID);
-                    break;
-                case clsPersonne.enuNiveau.iSUPERVISEUR:
-                    gestion = new clsGestionSuperviseur();
-                    tableDeDonnees = gestion.RecupererListePersonnes(personne.iID);
-                    break;
-                default:
-                    break;
-            }
-
-            if (tableDeDonnees == null || tableDeDonnees.Rows.Count <= 0)
-                return resultat;
-
-            foreach (DataRow item in tableDeDonnees.Rows)
-            {
-                resultat.Add(Convert.ToInt32(item[0]));
-            }
-
-            return resultat;
-        }
-
-        private void AttribuerValeur(clsPanier resultat)
-        {
-            if (personneTransaction.iID == 0)
-            {
-                txtNom.Clear();
-                txtPrenom.Clear();
-                txtAddresse.Clear();
-                rdbHomme.Checked = false;
-                rdbFemme.Checked = false;
-                dpDateNaissance.Value = DateTime.Now;
-
-                return;
-            }
-
-            if (resultat.lstArticles.Count > 0)
-                dgPanier.DataSource = resultat.lstArticles;
-
-            if (resultat.objPersonnes != null || resultat.objPersonnes.iID > 0)
-            {
-                txtNom.Text = resultat.objPersonnes.sNom;
-                txtPrenom.Text = resultat.objPersonnes.sPrenom;
-                txtAddresse.Text = resultat.objPersonnes.sAdresse;
-
-                switch (resultat.objPersonnes.eSexe)
-                {
-                    case clsPersonne.enuSexe.iHOMME:
-                        rdbHomme.Checked = true;
-                        break;
-                    case clsPersonne.enuSexe.iFEMME:
-                        rdbFemme.Checked = true;
-                        break;
-                    default:
-                        break;
-                }
-
-                dpDateNaissance.Value = resultat.objPersonnes.dDateNaissance;
             }
         }
 
@@ -250,33 +152,6 @@ namespace Infomil
             }
         }
 
-        private bool ValiderEtAttribuerValeur()
-        {
-            bool resultat = true;
-
-            if (string.IsNullOrWhiteSpace(txtNom.Text))
-                return false;
-            if (string.IsNullOrWhiteSpace(txtPrenom.Text))
-                return false;
-            if (string.IsNullOrWhiteSpace(txtAddresse.Text))
-                return false;
-            if (!rdbHomme.Checked && !rdbFemme.Checked)
-                return false;
-
-            personneTransaction.sNom = txtNom.Text.Trim();
-            personneTransaction.sPrenom = txtPrenom.Text.Trim();
-            personneTransaction.sAdresse = txtAddresse.Text.Trim();
-
-            if (rdbHomme.Checked)
-                personneTransaction.eSexe = clsPersonne.enuSexe.iHOMME;
-            else
-                personneTransaction.eSexe = clsPersonne.enuSexe.iFEMME;
-
-            personneTransaction.dDateNaissance = dpDateNaissance.Value;
-
-            return resultat;
-        }
-
         private void btnSuivant_Click(object sender, EventArgs e)
         {
             try
@@ -318,5 +193,130 @@ namespace Infomil
             personneTransaction.iID = listePersonneId.ElementAt(indice);
             RecupererPersonneParNiveau(true);
         }
+
+        private void AttribuerValeur(clsPanier resultat)
+        {
+            if (personneTransaction.iID == 0)
+            {
+                txtNom.Clear();
+                txtPrenom.Clear();
+                txtAddresse.Clear();
+                rdbHomme.Checked = false;
+                rdbFemme.Checked = false;
+                dpDateNaissance.Value = DateTime.Now;
+
+                return;
+            }
+
+            if (resultat.lstArticles.Count > 0)
+                dgPanier.DataSource = resultat.lstArticles;
+
+            if (resultat.objPersonnes != null || resultat.objPersonnes.iID > 0)
+            {
+                txtNom.Text = resultat.objPersonnes.sNom;
+                txtPrenom.Text = resultat.objPersonnes.sPrenom;
+                txtAddresse.Text = resultat.objPersonnes.sAdresse;
+
+                switch (resultat.objPersonnes.eSexe)
+                {
+                    case clsPersonne.enuSexe.iHOMME:
+                        rdbHomme.Checked = true;
+                        break;
+                    case clsPersonne.enuSexe.iFEMME:
+                        rdbFemme.Checked = true;
+                        break;
+                    default:
+                        break;
+                }
+
+                dpDateNaissance.Value = resultat.objPersonnes.dDateNaissance;
+            }
+        }
+
+        private void RecupererPersonneParNiveau(bool SauterRecupererlistPersonne = false)
+        {
+            switch (personne.eNiveau)
+            {
+                case clsPersonne.enuNiveau.iCLIENT:
+                case clsPersonne.enuNiveau.iSUPERVISEUR:
+                    gestion = new clsGestionSuperviseur();
+                    panier = gestion.RecupererPanierPersonne(personneTransaction.iID);
+                    if (!SauterRecupererlistPersonne && personne.eNiveau == clsPersonne.enuNiveau.iSUPERVISEUR)
+                        listePersonneId = RecupererListPersonParId(personne);
+                    break;
+                case clsPersonne.enuNiveau.iCHEF_RAYON:
+                    gestion = new clsGestionChefRayon();
+                    panier = gestion.RecupererPanierPersonne(personneTransaction.iID);
+                    if (!SauterRecupererlistPersonne)
+                        listePersonneId = RecupererListPersonParId(personne);
+                    break;
+                default:
+                    throw new Exception(clsCommun.ErreurApplicationGeneric);
+            }
+
+            if (listePersonneId.Count > 0)
+                ConteurIndice = listePersonneId.FindIndex(x => x == personneTransaction.iID);
+        }
+
+        private List<int> RecupererListPersonParId(clsPersonne personne)
+        {
+            List<int> resultat = new List<int>();
+            clsGestionPersonnes gestion;
+            DataTable tableDeDonnees = new DataTable();
+
+            switch (personne.eNiveau)
+            {
+                case clsPersonne.enuNiveau.iCLIENT:
+                    break;
+                case clsPersonne.enuNiveau.iCHEF_RAYON:
+                    gestion = new clsGestionChefRayon();
+                    tableDeDonnees = gestion.RecupererListePersonnes(personne.iID);
+                    break;
+                case clsPersonne.enuNiveau.iSUPERVISEUR:
+                    gestion = new clsGestionSuperviseur();
+                    tableDeDonnees = gestion.RecupererListePersonnes(personne.iID);
+                    break;
+                default:
+                    break;
+            }
+
+            if (tableDeDonnees == null || tableDeDonnees.Rows.Count <= 0)
+                return resultat;
+
+            foreach (DataRow item in tableDeDonnees.Rows)
+            {
+                resultat.Add(Convert.ToInt32(item[0]));
+            }
+
+            return resultat;
+        }
+
+        private bool ValiderEtAttribuerValeur()
+        {
+            bool resultat = true;
+
+            if (string.IsNullOrWhiteSpace(txtNom.Text))
+                return false;
+            if (string.IsNullOrWhiteSpace(txtPrenom.Text))
+                return false;
+            if (string.IsNullOrWhiteSpace(txtAddresse.Text))
+                return false;
+            if (!rdbHomme.Checked && !rdbFemme.Checked)
+                return false;
+
+            personneTransaction.sNom = txtNom.Text.Trim();
+            personneTransaction.sPrenom = txtPrenom.Text.Trim();
+            personneTransaction.sAdresse = txtAddresse.Text.Trim();
+
+            if (rdbHomme.Checked)
+                personneTransaction.eSexe = clsPersonne.enuSexe.iHOMME;
+            else
+                personneTransaction.eSexe = clsPersonne.enuSexe.iFEMME;
+
+            personneTransaction.dDateNaissance = dpDateNaissance.Value;
+
+            return resultat;
+        }
+
     }
 }

@@ -22,6 +22,38 @@ namespace Infomil
             this.dgDetaileClient.RowHeadersVisible = false;
         }
 
+        private void frmGestionDesPersonnes_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (personne == null || personne.iID <= 0)
+                    throw new Exception();
+
+                switch (personne.eNiveau)
+                {
+                    case clsPersonne.enuNiveau.iCLIENT:
+                        throw new Exception();
+                    case clsPersonne.enuNiveau.iCHEF_RAYON:
+                        dgDetaileClient.DataSource = RecupereListeClients(personne);
+                        break;
+                    case clsPersonne.enuNiveau.iSUPERVISEUR:
+                        dgDetaileClient.DataSource = RecupereListeClients(personne);
+                        break;
+                    default:
+                        throw new Exception();
+                }
+
+                ConfigureDatasource();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(clsCommun.ErreurGeneriqueQuitterApplication);
+                frmAuthentification authentification = new frmAuthentification();
+                authentification.Show();
+                this.Close();
+            }
+        }
+
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             frmInfoClients clients = new frmInfoClients();
@@ -118,47 +150,6 @@ namespace Infomil
             Application.Exit();
         }
 
-        private void frmGestionDesPersonnes_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (personne == null || personne.iID <= 0)
-                    throw new Exception();
-
-                switch (personne.eNiveau)
-                {
-                    case clsPersonne.enuNiveau.iCLIENT:
-                        throw new Exception();
-                    case clsPersonne.enuNiveau.iCHEF_RAYON:
-                        dgDetaileClient.DataSource = RecupereListeClients(personne);
-                        break;
-                    case clsPersonne.enuNiveau.iSUPERVISEUR:
-                        dgDetaileClient.DataSource = RecupereListeClients(personne);
-                        break;
-                    default:
-                        throw new Exception();
-                }
-
-                ConfigureDatasource();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(clsCommun.ErreurGeneriqueQuitterApplication);
-                frmAuthentification authentification = new frmAuthentification();
-                authentification.Show();
-                this.Close();
-            }
-        }
-
-        private void ConfigureDatasource()
-        {
-            if (dgDetaileClient.Rows.Count > 0)
-            {
-                this.dgDetaileClient.Columns[0].Visible = false;
-                iID = Convert.ToInt32(dgDetaileClient.SelectedRows[0].Cells[0].Value);
-            }
-        }
-
         private DataTable RecupereListeClients(clsPersonne personne)
         {
             DataTable resultat = new DataTable();
@@ -176,6 +167,15 @@ namespace Infomil
             }
 
             return resultat;
+        }
+
+        private void ConfigureDatasource()
+        {
+            if (dgDetaileClient.Rows.Count > 0)
+            {
+                this.dgDetaileClient.Columns[0].Visible = false;
+                iID = Convert.ToInt32(dgDetaileClient.SelectedRows[0].Cells[0].Value);
+            }
         }
 
         private void dgDetaileClient_CellClick(object sender, DataGridViewCellEventArgs e)
