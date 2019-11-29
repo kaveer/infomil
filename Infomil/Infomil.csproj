@@ -106,5 +106,37 @@
       <Name>LogiqueMetier</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BaseDeDonnees\Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BaseDeDonnees\Scriptes\dbo.tblPanierRecupererParId.StoredProcedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Scriptes\dbo.tblPanierSupprimerParId.StoredProcedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Scriptes\dbo.tblPersonneAjouter.StoredProcedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Scriptes\dbo.tblPersonneMisAJour.StoredProcedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Scriptes\dbo.tblPersonneRecupererParId.StoredProcedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Scriptes\dbo.tblPersonnesRechercherParUtilisateurMotDePasse.StoredProcedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Scriptes\dbo.tblPersonnesRecuperePersonneParChefRayon.StoredProcedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Scriptes\dbo.tblPersonnesRecuperePersonneParSuperviseur.StoredProcedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Scriptes\dbo.tblPersonnesSupprimerParId.StoredProcedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
