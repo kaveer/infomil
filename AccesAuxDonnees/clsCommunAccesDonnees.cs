@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AccesAuxDonnees
 {
-   public class clsCommunAccesDonnees
+    public class clsCommunAccesDonnees
     {
         private readonly string connectionString;
         private SqlConnection connexion = new SqlConnection();
