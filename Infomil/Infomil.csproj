@@ -106,10 +106,20 @@
       <Name>LogiqueMetier</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="BaseDeDonnees\Tables\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="BaseDeDonnees\DonneesClients\dbo.tblARTICLES.Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\DonneesClients\dbo.tblPANIER.Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\DonneesClients\dbo.tblPERSONNES.Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\DonneesClients\dbo.tblRESPONSABLES_RAYONS.Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="BaseDeDonnees\Scriptes\dbo.tblPanierRecupererParId.StoredProcedure.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -135,6 +145,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="BaseDeDonnees\Scriptes\dbo.tblPersonnesSupprimerParId.StoredProcedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Tables\dbo.tblARTICLES.Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Tables\dbo.tblPANIER.Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Tables\dbo.tblPERSONNES.Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDonnees\Tables\dbo.tblRESPONSABLES_RAYONS.Table.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
