@@ -83,6 +83,7 @@
     <EmbeddedResource Include="GestionDesPersonnes.resx">
       <DependentUpon>GestionDesPersonnes.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="BaseDeDonnees\Sauvegarde\BD_TEST" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
