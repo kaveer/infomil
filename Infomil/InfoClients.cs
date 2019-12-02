@@ -11,6 +11,9 @@ namespace Infomil
 {
     public partial class frmInfoClients : Form
     {
+        /// <summary>
+        /// declare and initialize global variable
+        /// </summary>
         public clsPersonne personneTransaction = new clsPersonne();
         public clsPersonne personne = new clsPersonne();
         List<int> listePersonneId = new List<int>();
@@ -18,6 +21,9 @@ namespace Infomil
         clsPanier panier = new clsPanier();
         int ConteurIndice;
 
+        /// <summary>
+        /// initialization of components
+        /// </summary>
         public frmInfoClients()
         {
             InitializeComponent();
@@ -36,6 +42,12 @@ namespace Infomil
 
         }
 
+        /// <summary>
+        /// retrieve client information if id > 0
+        /// skip retrieve if id = 0
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmInfoClients_Load(object sender, EventArgs e)
         {
             try
@@ -65,11 +77,18 @@ namespace Infomil
             }
         }
 
+
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// retrieve client details based on id
+        /// assign value to textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             try
@@ -100,6 +119,13 @@ namespace Infomil
             }
         }
 
+        /// <summary>
+        /// perform validation of input data
+        /// if id > 0 update client info based on id
+        /// if id = 0 add new client
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnValider_Click(object sender, EventArgs e)
         {
             try
@@ -152,6 +178,12 @@ namespace Infomil
             }
         }
 
+        /// <summary>
+        /// navigate through clients 
+        /// clients are retrieve based on user role in load method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSuivant_Click(object sender, EventArgs e)
         {
             try
@@ -194,6 +226,10 @@ namespace Infomil
             RecupererPersonneParNiveau(true);
         }
 
+        /// <summary>
+        /// assign value to text box
+        /// </summary>
+        /// <param name="resultat"></param>
         private void AttribuerValeur(clsPanier resultat)
         {
             if (personneTransaction.iID == 0)
@@ -233,6 +269,11 @@ namespace Infomil
             }
         }
 
+        /// <summary>
+        /// retrieve client info baased on id 
+        /// retrieve list of clients based on authenticator role
+        /// </summary>
+        /// <param name="SauterRecupererlistPersonne"></param>
         private void RecupererPersonneParNiveau(bool SauterRecupererlistPersonne = false)
         {
             switch (personne.eNiveau)
@@ -258,6 +299,12 @@ namespace Infomil
                 ConteurIndice = listePersonneId.FindIndex(x => x == personneTransaction.iID);
         }
 
+        /// <summary>
+        /// call method in business layer to retrieve list of clients
+        /// retrieve list of clients based on authenticator role
+        /// </summary>
+        /// <param name="personne"></param>
+        /// <returns></returns>
         private List<int> RecupererListPersonParId(clsPersonne personne)
         {
             List<int> resultat = new List<int>();
@@ -291,6 +338,11 @@ namespace Infomil
             return resultat;
         }
 
+        /// <summary>
+        /// validate input data
+        /// assign textbox value to model 
+        /// </summary>
+        /// <returns></returns>
         private bool ValiderEtAttribuerValeur()
         {
             bool resultat = true;

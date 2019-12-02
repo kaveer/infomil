@@ -25,6 +25,7 @@ namespace Infomil
         {
             try
             {
+                ///declaration of local variables
                 string utilisatueur = txtUtilisateur.Text.Trim();
                 string motDePasse = txtMotDePasse.Text.Trim();
                 clsPersonne authentifier = new clsPersonne();
@@ -33,12 +34,14 @@ namespace Infomil
                 if (string.IsNullOrWhiteSpace(utilisatueur) || (string.IsNullOrWhiteSpace(utilisatueur) && string.IsNullOrWhiteSpace(motDePasse)))
                     throw new Exception(clsCommun.ErreurUtilisateur);
 
+                //get authentication based on credentials by data layer
                 gestion = new clsGestionSuperviseur();
                 authentifier = gestion.AuthentifierPersonne(utilisatueur, motDePasse);
 
                 if (authentifier == null)
                     throw new Exception(clsCommun.ErreurEntree);
 
+                //navigation based on role
                 switch (authentifier.eNiveau)
                 {
                     case clsPersonne.enuNiveau.iCLIENT:
@@ -76,6 +79,8 @@ namespace Infomil
             frmGestionDesPersonnes gestionDesPersonnes = new frmGestionDesPersonnes();
             frmInfoClients infoClients = new frmInfoClients();
 
+            /// make control visible based on user role
+            /// this allow developer to used only one form for both chef de rayon and supervisor
             switch (personne.eNiveau)
             {
                 case clsPersonne.enuNiveau.iCLIENT:

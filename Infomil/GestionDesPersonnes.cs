@@ -9,10 +9,14 @@ namespace Infomil
 {
     public partial class frmGestionDesPersonnes : Form
     {
+        //global variables
         public clsPersonne personne = new clsPersonne();
         private clsGestionPersonnes gestion;
         private int iID = 0;
 
+        /// <summary>
+        ///  initialisation
+        /// </summary>
         public frmGestionDesPersonnes()
         {
             InitializeComponent();
@@ -22,6 +26,12 @@ namespace Infomil
             this.dgDetaileClient.RowHeadersVisible = false;
         }
 
+        /// <summary>
+        /// load method
+        /// retrieve list of client based on authenticator role
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmGestionDesPersonnes_Load(object sender, EventArgs e)
         {
             try
@@ -54,6 +64,11 @@ namespace Infomil
             }
         }
 
+        /// <summary>
+        /// navigate to info client with id 0
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             frmInfoClients clients = new frmInfoClients();
@@ -65,6 +80,11 @@ namespace Infomil
             clients.Show();
         }
 
+        /// <summary>
+        /// open info client with id = selected row id in grid view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnVisualiser_Click(object sender, EventArgs e)
         {
             try
@@ -109,6 +129,12 @@ namespace Infomil
             }
         }
 
+        /// <summary>
+        /// delete selected record by id
+        /// reload grid view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             try
@@ -138,6 +164,11 @@ namespace Infomil
             }
         }
 
+        /// <summary>
+        /// navigate to authentication form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSeDeconnecter_Click(object sender, EventArgs e)
         {
             frmAuthentification authentification = new frmAuthentification();
@@ -145,11 +176,22 @@ namespace Infomil
             this.Close();
         }
 
+        /// <summary>
+        /// exit application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// retrieve list of clients by business layer
+        /// return datatable as data type
+        /// </summary>
+        /// <param name="personne"></param>
+        /// <returns></returns>
         private DataTable RecupereListeClients(clsPersonne personne)
         {
             DataTable resultat = new DataTable();
@@ -169,6 +211,9 @@ namespace Infomil
             return resultat;
         }
 
+        /// <summary>
+        /// retrieve first record in gridview and assign it to golbal variablr ID
+        /// </summary>
         private void ConfigureDatasource()
         {
             if (dgDetaileClient.Rows.Count > 0)
