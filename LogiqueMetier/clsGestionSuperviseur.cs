@@ -14,6 +14,13 @@ namespace LogiqueMetier
     {
         private clsPersonnesAccesDonnees accesDonnees;
 
+        /// <summary>
+        /// over ride adbstract method to create a new client
+        /// validate  client info
+        /// instanciate data layer abstract class
+        /// call method to save client data in data layer
+        /// </summary>
+        /// <param name="personne"></param>
         public override void CreerPersonne(clsPersonne personne)
         {
             if (!EstValabe(personne))
@@ -50,6 +57,12 @@ namespace LogiqueMetier
             return resultat;
         }
 
+        /// <summary>
+        /// retrieve list of client by id
+        /// call method from data layer
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <returns></returns>
         public override DataTable RecupererListePersonnes(int iID)
         {
             DataTable resultat = new DataTable();
@@ -60,6 +73,11 @@ namespace LogiqueMetier
             return resultat;
         }
 
+        /// <summary>
+        /// delete client by its id
+        /// call data layer method
+        /// </summary>
+        /// <param name="iID"></param>
         public override void SupprimerPersonne(int iID)
         {
             accesDonnees = new clsSuperviseurAccesDonnees();

@@ -10,12 +10,31 @@ namespace LogiqueMetier
 {
     public abstract class clsGestionPersonnes
     {
+        /// <summary>
+        /// declare global variable
+        /// </summary>
+        clsPersonnesAccesDonnees gestion;
+
+        /// <summary>
+        /// declare abstract classes
+        /// mathod to: 
+        ///     create client
+        ///     retrieve list of vlients
+        ///     delete client
+        /// </summary>
+        /// <param name="personne"></param>
         public abstract void CreerPersonne(clsPersonne personne);
         public abstract DataTable RecupererListePersonnes(int iID);
         public abstract void SupprimerPersonne(int iID);
-        clsPersonnesAccesDonnees gestion;
 
-
+        /// <summary>
+        /// validate id and password
+        /// call mathod from data layer
+        /// if valid retrieve user info
+        /// </summary>
+        /// <param name="utilisatueur"></param>
+        /// <param name="motDePasse"></param>
+        /// <returns></returns>
         public clsPersonne AuthentifierPersonne(string utilisatueur, string motDePasse)
         {
             clsPersonne resultat = new clsPersonne();
@@ -49,12 +68,24 @@ namespace LogiqueMetier
             }
         }
 
+        /// <summary>
+        /// update client
+        /// </summary>
+        /// <param name="personne"></param>
         public void ModifierPersonnes(clsPersonne personne)
         {
             gestion = new clsSuperviseurAccesDonnees();
             gestion.MAJPersonne(personne);
         }
 
+        /// <summary>
+        ///  call method from data layer
+        /// retrieve client info by vlient id
+        /// retrieve client shopping cart based on client id
+        /// assign value to return data type
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <returns></returns>
         public clsPanier RecupererPanierPersonne(int iID)
         {
             clsPanier resultat = new clsPanier();

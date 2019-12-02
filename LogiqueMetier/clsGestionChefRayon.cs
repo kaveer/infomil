@@ -14,6 +14,12 @@ namespace LogiqueMetier
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// call method from data layer to retrieve list og clients
+        /// return datatable as data type
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <returns></returns>
         public override DataTable RecupererListePersonnes(int iID)
         {
             DataTable resultat = new DataTable();
