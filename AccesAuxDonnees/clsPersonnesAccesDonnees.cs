@@ -7,10 +7,26 @@ namespace AccesAuxDonnees
 {
     public abstract class clsPersonnesAccesDonnees
     {
+        /// <summary>
+        /// declare abstract classes
+        /// mathod to: 
+        ///     create client
+        ///     retrieve list of vlients
+        ///     delete client
+        /// </summary>
+        /// <param name="personne"></param>
         public abstract void CreerPersonnes(clsPersonne personne);
         public abstract DataTable RecupererListePersonnes(int iID);
         public abstract void SupprimerPersonne(int iID);
 
+        /// <summary>
+        /// open connection
+        /// retrieve client info by id and password
+        /// close connection
+        /// </summary>
+        /// <param name="utilisatueur"></param>
+        /// <param name="motDePasse"></param>
+        /// <returns></returns>
         public DataTable AuthentifierPersonne(string utilisatueur, string motDePasse)
         {
             DataTable resultat = new DataTable();
@@ -48,6 +64,10 @@ namespace AccesAuxDonnees
             }
         }
 
+        /// <summary>
+        /// update client by client id and client object
+        /// </summary>
+        /// <param name="personne"></param>
         public void MAJPersonne(clsPersonne personne)
         {
             clsCommunAccesDonnees commun = new clsCommunAccesDonnees();
@@ -74,6 +94,13 @@ namespace AccesAuxDonnees
             commun.FermerConnexion();
         }
 
+        /// <summary>
+        /// retrieve client by id
+        /// retrieve cart by id 
+        /// return all data as dataset
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <returns></returns>
         public DataSet RecupererPanierPersonne(int iID)
         {
             DataSet resultat = new DataSet();

@@ -12,6 +12,11 @@ namespace AccesAuxDonnees
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// retrieve clients by chef de rayon id
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <returns></returns>
         public override DataTable RecupererListePersonnes(int iID)
         {
             DataTable resultat = new DataTable();

@@ -7,6 +7,7 @@ namespace AccesAuxDonnees
 {
     public class clsSuperviseurAccesDonnees : clsPersonnesAccesDonnees
     {
+
         public override void CreerPersonnes(clsPersonne personne)
         {
             clsCommunAccesDonnees commun = new clsCommunAccesDonnees();
@@ -57,6 +58,10 @@ namespace AccesAuxDonnees
             return resultat;
         }
 
+        /// <summary>
+        /// delete client by client id
+        /// </summary>
+        /// <param name="iID"></param>
         public override void SupprimerPersonne(int iID)
         {
             SuppprimerPersonneParID(iID);
