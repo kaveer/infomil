@@ -117,7 +117,7 @@ namespace LogiqueMetier
                     sPrenom = dataSet.Tables[0].Rows[0][3].ToString(),
                     eSexe = RecupereSexe(dataSet.Tables[0].Rows[0][4].ToString()),
                     sAdresse = dataSet.Tables[0].Rows[0][5].ToString(),
-                    dDateNaissance = Convert.ToDateTime(dataSet.Tables[0].Rows[0][3].ToString()),
+                    dDateNaissance = Convert.ToDateTime(dataSet.Tables[0].Rows[0][6].ToString()),
                 };
             }
 

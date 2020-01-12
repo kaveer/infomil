@@ -54,6 +54,9 @@ namespace LogiqueMetier
             if (personne.dDateNaissance == null)
                 return false;
 
+            if (personne.dDateNaissance.Date.AddYears(18) > DateTime.Today.Date)
+                return false;
+
             return resultat;
         }
 

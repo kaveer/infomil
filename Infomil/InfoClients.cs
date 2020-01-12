@@ -191,6 +191,11 @@ namespace Infomil
                 ConteurIndice++;
                 RecupererIdParIndice(ConteurIndice, "suivant");
 
+                if (panier == null || panier.objPersonnes == null || panier.objPersonnes.iID <= 0)
+                    throw new Exception(clsCommun.ErreurRecupererPersonne);
+
+                AttribuerValeur(panier);
+
             }
             catch (Exception ex)
             {
@@ -204,6 +209,11 @@ namespace Infomil
             {
                 ConteurIndice--;
                 RecupererIdParIndice(ConteurIndice, "precedent");
+
+                if (panier == null || panier.objPersonnes == null || panier.objPersonnes.iID <= 0)
+                    throw new Exception(clsCommun.ErreurRecupererPersonne);
+
+                AttribuerValeur(panier);
             }
             catch (Exception ex)
             {
@@ -217,9 +227,15 @@ namespace Infomil
             if (listePersonneId.Count == 0)
                 throw new Exception(string.Format(clsCommun.ErreurNavigationClient, "pour naviguer"));
             if (indice < 0)
+            {
+                ConteurIndice = 0;
                 throw new Exception(string.Format(clsCommun.ErreurNavigationClient, SufixerreurSufix));
+            }
             if (indice > (listePersonneId.Count - 1))
+            {
+                ConteurIndice = listePersonneId.Count - 1;
                 throw new Exception(string.Format(clsCommun.ErreurNavigationClient, SufixerreurSufix));
+            }
 
             //int iID = listePersonneId[indexCounter];
             personneTransaction.iID = listePersonneId.ElementAt(indice);
@@ -244,8 +260,10 @@ namespace Infomil
                 return;
             }
 
-            if (resultat.lstArticles.Count > 0)
+            if (resultat.lstArticles?.Count > 0)
                 dgPanier.DataSource = resultat.lstArticles;
+            else
+                dgPanier.DataSource = null;
 
             if (resultat.objPersonnes != null || resultat.objPersonnes.iID > 0)
             {
@@ -366,6 +384,9 @@ namespace Infomil
                 personneTransaction.eSexe = clsPersonne.enuSexe.iFEMME;
 
             personneTransaction.dDateNaissance = dpDateNaissance.Value;
+
+            if (personneTransaction.dDateNaissance.Date.AddYears(18) > DateTime.Today.Date)
+                return false;
 
             return resultat;
         }

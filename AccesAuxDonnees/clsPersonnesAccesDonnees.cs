@@ -35,8 +35,6 @@ namespace AccesAuxDonnees
 
             try
             {
-
-
                 connexion = commun.OuvirConnexion();
                 if (connexion == null)
                     throw new Exception();
@@ -133,8 +131,6 @@ namespace AccesAuxDonnees
             command.Parameters.Add(new SqlParameter("@iid", iID));
 
             resultat.Load(command.ExecuteReader());
-            if (resultat == null || resultat.Rows.Count <= 0)
-                throw new Exception();
 
             commun.FermerConnexion();
 
