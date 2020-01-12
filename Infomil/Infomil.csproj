@@ -93,6 +93,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TestCase\Infomil TP testcase.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
